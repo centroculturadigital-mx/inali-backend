@@ -1,17 +1,24 @@
 FROM node:11
 
+ENV HOME=/home/src
 
-WORKDIR /inali-backend
+COPY . $HOME
 
-COPY package.json package.json
+WORKDIR $HOME
+
+
+#WORKDIR /inali-backend
+
+COPY package.json $HOME/package.json
 
 RUN npm install
 
-COPY . .
+COPY .  $HOME
 
-EXPOSE 3000:3000
+EXPOSE 3000
 
 RUN npm install -g nodemon
+
 
 CMD [ "nodemon", "server.js" ]
 

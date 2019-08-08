@@ -6,9 +6,19 @@ services:
     build: ./
     ports:
       - "3000:3000"
-#    volumes:
-#      - .:/app
-#    links:
-#      - mongo
-#volumes:
-#  data-volume:
+    volumes:
+      - ./:/home/src/
+    links:
+      - mongo
+  mongo:
+    container_name: inali-mongo
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - data-volume:/data/db
+    restart: always
+    logging:
+      driver: none
+volumes:
+  data-volume:

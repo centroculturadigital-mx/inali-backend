@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/centroculturadigital-mx/inali-backend#readme",
   "dependencies": {
-    "koa": "^2.7.0"
+    "@koa/cors": "^3.0.0",
+    "koa": "^2.7.0",
+    "mongoose": "^5.6.9"
   }
 }
