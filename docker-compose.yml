@@ -1,0 +1,35 @@
+version: "3"
+services:
+  app:
+    container_name: jcf-backend
+    restart: always
+    build: ./
+    ports:
+      - "80:3000"
+    volumes:
+      - .:/app
+    links:
+      - mongo
+  seed:
+    container_name: seed-docker
+    # build: ./seed-docker    
+    build:    
+      context: .
+      dockerfile: ./seed-docker/Dockerfile
+    volumes:
+      - ./seed:/home/seeduser/seed/
+      - ./models:/home/seeduser/seed/models
+    depends_on:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - data-volume:/data/db
+    restart: always
+    logging:
+      driver: none
+volumes:
+  data-volume:
