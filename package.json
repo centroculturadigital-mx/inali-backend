@@ -19,7 +19,10 @@
   "homepage": "https://github.com/centroculturadigital-mx/inali-backend#readme",
   "dependencies": {
     "@koa/cors": "^3.0.0",
+    "graphql": "^14.4.2",
     "koa": "^2.7.0",
+    "koa-graphql": "^0.8.0",
+    "koa-mount": "^4.0.0",
     "mongoose": "^5.6.9"
   }
 }

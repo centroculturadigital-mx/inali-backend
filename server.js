@@ -45,9 +45,6 @@ db.once('open', () => console.log('Database connected. App running.'))
         // })
         
 
-app.use(async ctx => {
-    ctx.body = 'Hola mundo!';
-});
 
 
 app.listen(3000);
