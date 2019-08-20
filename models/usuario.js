@@ -9,11 +9,13 @@ const UsuarioSchema = new mongoose.Schema({
     status: { type: String, enum: PUBLICACION_STATUS },
     nombreUsuario: String,
     fechaNacimiento: Date,
+    edad: Number,
     genero: String,
     nombres: String,
     apellidos: String,
     contrasenna: String,
-    email: String
+    email: String,
+    src: String
 });
   
 module.exports = mongoose.model('Usuario', UsuarioSchema);
