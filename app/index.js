@@ -10,7 +10,7 @@ const mount = require('koa-mount');
 const schema = require('./graphql/schema/schema');
 const root = require('./graphql/root/root');
 
-const importXLS = require('./xls')
+// const importXLS = require('./xls')
 
 
 const app = new koa();
@@ -38,7 +38,7 @@ app.use(
     )
 );
 
-importXLS()
+// importXLS()
 
 app.listen(3000);
 

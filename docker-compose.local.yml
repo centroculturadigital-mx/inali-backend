@@ -1,0 +1,36 @@
+version: "3"
+services:
+  app:
+    container_name: inali-backend-app
+    build: 
+      context: ./
+      dockerfile: ./app/Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./modelos:/src/app/modelos
+      - ./app:/src/app
+    depends_on:
+      - mongo
+  importador:
+    container_name: inali-backend-importador
+    build: 
+      context: ./
+      dockerfile: ./importador/Dockerfile.dev
+    volumes:
+      - ./modelos:/src/importador/modelos
+      - ./importador:/src/importador
+    depends_on:
+      - mongo
+
+  mongo:
+    container_name: inali-mongo
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - data-volume:/data/db
+    logging:
+      driver: none
+volumes:
+  data-volume:
