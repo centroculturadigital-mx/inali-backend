@@ -15,7 +15,7 @@ const app = new koa();
 
 app.use(cors());
 
-
+http://thecodebarbarian.com/2015/07/24/guide-to-mongoose-discriminators
 
 mongoose.connect(`mongodb://mongo:27017/inali`, {
     useNewUrlParser: true
@@ -29,7 +29,7 @@ app.use(
     mount(
         '/graphql',
         graphqlHTTP({
-            mySchema,
+            schema: mySchema,
             graphiql: true
         })
     )

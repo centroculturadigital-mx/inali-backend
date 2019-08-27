@@ -4,11 +4,7 @@ const PUBLICACION_STATUS = require('../data/PUBLICACION_STATUS')
 
 
 
-const LenguaSchema = new mongoose.Schema({
-  tipo:  {
-    type: String,
-    required: true
-  },
+const LenguaEsquema = new mongoose.Schema({
   nombreOriginario: {
     type: String,
     required: true
@@ -18,25 +14,53 @@ const LenguaSchema = new mongoose.Schema({
     required: true
   },
   otrosNombres: String,
-  variantes: String,
   comunidades: String,
   alfabeto: String,
   latitud: Number,
   longitud: Number,
-  familia: String,
-  categoriasLinguisticas: String,
+  categoriasLinguisticas: String, // TODO: hablar con Yotz sobre esto
   riesgoDesaparicion: Number,
   cantidadHablantes: String,
   distribucionDemografica: String,
-  audios: String,
-  fotografias: String,
-  textiles: String,
-  twitterCuentas: String,
-  twitterHashtags: String,
-  tweets: String,
+  // audios: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: 'Audio'
+  //   }
+  // ],
+  // fotografias:[
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: 'Fotografia'
+  //   }
+  // ],
+  // textiles: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: 'Textil'
+  //   }
+  // ],
+  // twitterCuentas: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: 'TwitterCuenta'
+  //   }
+  // ],
+  // twitterHashtags: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: 'TwitterHashtag'
+  //   }
+  // ],
+  // tweets: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: 'Tweet'
+  //   }
+  // ],
   normaDeEscritura: String
 });
   
-module.exports = mongoose.model('Lengua', LenguaSchema);
+module.exports = mongoose.model('Lengua', LenguaEsquema);
 
      tweets    

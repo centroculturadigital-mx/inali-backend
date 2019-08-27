@@ -4,7 +4,7 @@ const PUBLICACION_STATUS = require('../data/PUBLICACION_STATUS')
 
 
 
-const UsuariaSchema = new mongoose.Schema({
+const UsuariaEsquema = new mongoose.Schema({
     imagenPerfil: String,
     status: { type: String, enum: PUBLICACION_STATUS },
     nombreUsuaria: String,
@@ -18,4 +18,4 @@ const UsuariaSchema = new mongoose.Schema({
     origen: String
 }); 
   
-module.exports = mongoose.model('Usuaria', UsuariaSchema);
+module.exports = mongoose.model('Usuaria', UsuariaEsquema);
