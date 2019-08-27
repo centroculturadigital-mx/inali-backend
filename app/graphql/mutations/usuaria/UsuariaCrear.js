@@ -1,4 +1,4 @@
-const UsuarioModelo = require("../../../modelos/usuario")
+const Usuaria = require("../../../modelos/Usuaria")
 
 const BaseResolver = require('../../BaseResolver');
 const {GraphQLString, GraphQLInt} = require('graphql');
@@ -11,19 +11,19 @@ class UserMutation extends BaseResolver {
         return {
             contrasenna: {
                 type: GraphQLString,
-                description: 'Contraseña del usuario'
+                description: 'Contraseña del usuaria'
             },
             nombres: {
                 type: GraphQLString,
-                description: 'Nombre del usuario'
+                description: 'Nombre del usuaria'
             },
-            nombreUsuario: {
+            nombreUsuaria: {
                 type: GraphQLString,
-                description: 'NombreUsuario del usuario'
+                description: 'NombreUsuaria del usuaria'
             },
             email: {
                 type: GraphQLString,
-                description: 'Email del usuario'
+                description: 'Email del usuaria'
             }
         };
     }
@@ -39,10 +39,10 @@ class UserMutation extends BaseResolver {
 
         args.contrasenna = hash
 
-        const nuevoUsuario = new UsuarioModelo(args)
+        const nuevoUsuaria = new Usuaria(args)
 
         try {
-            return await nuevoUsuario.save();
+            return await nuevoUsuaria.save();
         } catch (e) {
             throw new Error(e);
         }
@@ -51,5 +51,5 @@ class UserMutation extends BaseResolver {
 
 module.exports = UserMutation;
 
-// const nuevoUsuario = new UsuarioModelo(entrada);
-//     return nuevoUsuario.save();
+// const nuevoUsuaria = new Usuaria(entrada);
+//     return nuevoUsuaria.save();

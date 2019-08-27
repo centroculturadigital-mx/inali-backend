@@ -4,13 +4,13 @@ const {
 } = require('graphql')
 
 
-const Usuario = new GraphQLObjectType({
-  name: 'Usuario',
-  description: 'Usuario entidad',
+const Usuaria = new GraphQLObjectType({
+  name: 'Usuaria',
+  description: 'Usuaria entidad',
   fields: () => ({
     id: { type: GraphQLString },
     imagenPerfil: { type: GraphQLString },
-    nombreUsuario: { type: GraphQLString },
+    nombreUsuaria: { type: GraphQLString },
     fechaNacimiento: { type: GraphQLString },
     genero: { type: GraphQLString },
     nombres: { type: GraphQLString },
@@ -20,4 +20,4 @@ const Usuario = new GraphQLObjectType({
   })
 })
 
-module.exports = Usuario
+module.exports = Usuaria

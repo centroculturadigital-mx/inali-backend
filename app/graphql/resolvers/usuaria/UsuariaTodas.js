@@ -1,9 +1,9 @@
 const BaseResolver = require('../../BaseResolver');
 const { GraphQLString, GraphQLInt } = require('graphql');
 
-const UsuarioModelo = require('../../../modelos/usuario')
+const UsuariaModelo = require('../../../modelos/Usuaria')
 
-class UsuarioTodos extends BaseResolver {
+class UsuariaTodos extends BaseResolver {
 
     get args() {
         return {
@@ -23,11 +23,11 @@ class UsuarioTodos extends BaseResolver {
         super.resolve(parentValue, args, ctx);
 
         try {
-            return await UsuarioModelo.find(args);
+            return await UsuariaModelo.find(args);
         } catch (e) {
             throw new Error(e);
         }
     }
 }
 
-module.exports = UsuarioTodos;
+module.exports = UsuariaTodos;

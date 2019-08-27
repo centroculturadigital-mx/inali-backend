@@ -1,20 +1,20 @@
-const UsuarioModelo = require("../../../modelos/usuario")
+const Usuaria = require("../../../modelos/Usuaria")
 
 const BaseResolver = require('../../BaseResolver')
 const { GraphQLString } = require('graphql')
 const passport = require("koa-passport")
 
-class UserMutation extends BaseResolver {
+class UsuariaMutation extends BaseResolver {
 
     get args() {
       return {
         email: {
             type: GraphQLString,
-            description: 'Email del usuario.'
+            description: 'Email del usuaria.'
         },
-        contrsenna: {
+        contrasenna: {
             type: GraphQLString,
-            description: 'Contraseña del usuario.'
+            description: 'Contraseña del usuaria.'
         },
       }
     }
@@ -31,7 +31,4 @@ class UserMutation extends BaseResolver {
     }
 }
 
-module.exports = UserMutation
-
-// const nuevoUsuario = new UsuarioModelo(entrada)
-//     return nuevoUsuario.save()
+module.exports = UsuariaMutation

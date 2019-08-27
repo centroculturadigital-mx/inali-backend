@@ -7,20 +7,20 @@ const {
 
 const resolvers = require('./resolvers');
 const mutations = require('./mutations');
-const Usuario = require('./types/Usuario');
+const Usuaria = require('./types/Usuaria');
 
 const Query = new GraphQLObjectType({
   name: 'RootQuery',
   description: 'Root Query',
   fields: () => ({
-      usuarios: new resolvers.Usuario.UsuarioTodosObtener(
-        new GraphQLList(Usuario), 
-        "Obten todos los usuarios",
+      usuarias: new resolvers.Usuaria.UsuariaTodasObtener(
+        new GraphQLList(Usuaria), 
+        "Obten todos los usuarias",
         false
       ),
-      usuario: new resolvers.Usuario.UsuarioObtener(
-        Usuario, 
-        "Obtener un usuario",
+      usuaria: new resolvers.Usuaria.UsuariaObtener(
+        Usuaria, 
+        "Obtener un usuaria",
         true
       )
   })
@@ -30,13 +30,13 @@ const Mutation = new GraphQLObjectType({
   name: 'RootMutation',
   description: 'Root Mutation',
   fields: () => ({
-      usuarioCrear: new mutations.Usuario.UsuarioCrear(
-        Usuario, 
-        "Crea un nuevo usuario",
+      usuariaCrear: new mutations.Usuaria.UsuariaCrear(
+        Usuaria, 
+        "Crea un nuevo usuaria",
         false
       ),
-      usuarioIngresar: new mutations.Usuario.UsuarioIngresar(
-        Usuario, 
+      usuariaIngresar: new mutations.Usuaria.UsuariaIngresar(
+        Usuaria, 
         "Updates current user",
         true
       )

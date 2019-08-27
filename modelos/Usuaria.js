@@ -7,7 +7,7 @@ const PUBLICACION_STATUS = require('../data/PUBLICACION_STATUS')
 const UsuariaSchema = new mongoose.Schema({
     imagenPerfil: String,
     status: { type: String, enum: PUBLICACION_STATUS },
-    nombreUsuario: String,
+    nombreUsuaria: String,
     fechaNacimiento: Date,
     edad: Number,
     genero: String,

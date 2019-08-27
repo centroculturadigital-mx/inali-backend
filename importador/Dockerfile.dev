@@ -6,14 +6,6 @@ COPY . $MAIN_DIR
 
 WORKDIR $MAIN_DIR
 
-# COPY package.json $MAIN_DIR/package.json
-
-# RUN npm install
-
-COPY .  $MAIN_DIR
-
-EXPOSE 3000
-
 RUN npm install -g nodemon
 
 CMD [ "nodemon", "index.js" ]

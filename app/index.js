@@ -7,9 +7,7 @@ const graphqlHTTP = require('koa-graphql');
 const mount = require('koa-mount');
 
 
-const schema = require('./graphql/schema/schema');
-const root = require('./graphql/root/root');
-
+const mySchema = require('./graphql/schema');
 // const importXLS = require('./xls')
 
 
@@ -31,8 +29,7 @@ app.use(
     mount(
         '/graphql',
         graphqlHTTP({
-            schema,
-            rootValue: root,
+            mySchema,
             graphiql: true
         })
     )
@@ -40,10 +37,10 @@ app.use(
 
 // importXLS()
 
-app.listen(3000);
+app.listen(4000);
 
 
-console.log("INALI backend corriendo en puerto 3000")
+console.log("INALI backend corriendo en puerto 4000")
 
 
   

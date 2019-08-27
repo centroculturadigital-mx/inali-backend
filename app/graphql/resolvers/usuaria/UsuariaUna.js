@@ -1,15 +1,15 @@
 const BaseResolver = require('../../BaseResolver');
 const {GraphQLNonNull, GraphQLString} = require('graphql');
 
-const UsuarioModelo = require('../../../modelos/usuario')
+const UsuariaModelo = require('../../../modelos/Usuaria')
 
-class UsuarioUno extends BaseResolver {
+class UsuariaUno extends BaseResolver {
 
     get args() {
         return {
             id: {
                 type: new GraphQLNonNull(GraphQLString),
-                description: 'Id del usuario.'
+                description: 'Id del usuaria.'
             }
         };
     }
@@ -19,11 +19,11 @@ class UsuarioUno extends BaseResolver {
         super.resolve(parentValue, args, ctx);
 
         try {
-            return await UsuarioModelo.findOne({ _id: args.id });
+            return await UsuariaModelo.findOne({ _id: args.id });
         } catch (e) {
             throw new Error(e);
         }
     }
 }
 
-module.exports = UsuarioUno;
+module.exports = UsuariaUno;
