@@ -1,3 +1,7 @@
 node_modules
 .config/
 .npm/
+app/data
+app/modelos
+importador/modelos
+importador/data
