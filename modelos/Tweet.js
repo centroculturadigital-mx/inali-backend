@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 
 const TweetEsquema = new mongoose.Schema({
+    id: Number, 
     twitter_id: String,
     content: String,
     tweet_date: Date,

@@ -1,10 +1,19 @@
 const mongoose = require('mongoose');
 
 const PUBLICACION_STATUS = require('../data/PUBLICACION_STATUS')
+const LENGUA_TIPOS = require('../data/LENGUA_TIPOS')
 
 
 
 const LenguaEsquema = new mongoose.Schema({
+  id: Number,
+  origen: String,
+  tipo: {
+    type: String,
+    require: true,
+    enum: Object.keys(LENGUA_TIPOS),
+    description: 'Tipo: FAMILIA, AGRUPACION, VARIANTE',
+  },
   nombreOriginario: {
     type: String,
     required: true
@@ -60,7 +69,7 @@ const LenguaEsquema = new mongoose.Schema({
   // ],
   normaDeEscritura: String
 });
+
+LenguaEsquema.set('discriminatorKey', 'tipo')
   
 module.exports = mongoose.model('Lengua', LenguaEsquema);
-
-     tweets    

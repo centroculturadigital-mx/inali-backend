@@ -1,47 +1,43 @@
-const koa = require("koa");
+const Koa = require("koa")
+const Router = require("koa-router")
+const cors = require("@koa/cors")
+const mount = require('koa-mount')
+
+const graphqlHTTP = require('koa-graphql')
+
 const mongoose = require("mongoose")
 
-const cors = require("@koa/cors");
 
-const graphqlHTTP = require('koa-graphql');
-const mount = require('koa-mount');
-
-
-const mySchema = require('./graphql/schema');
-// const importXLS = require('./xls')
-
-
-const app = new koa();
-
-app.use(cors());
-
-http://thecodebarbarian.com/2015/07/24/guide-to-mongoose-discriminators
+const mySchema = require('./graphql/schema')
 
 mongoose.connect(`mongodb://mongo:27017/inali`, {
-    useNewUrlParser: true
-});
+	useNewUrlParser: true
+})
 
 const db = mongoose.connection
-db.on('error', console.error.bind(console, 'connection error:'));
+db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', () => console.log('Database connected. App running.'))
 
+const app = new Koa()
+const router = new Router()
+
+app.use(cors())
+
 app.use(
-    mount(
-        '/graphql',
-        graphqlHTTP({
-            schema: mySchema,
-            graphiql: true
-        })
-    )
-);
+	mount(
+		'/graphql',
+		graphqlHTTP({
+			schema: mySchema,
+			graphiql: true
+		})
+	)
+)
 
-// importXLS()
+router.redirect('/', '/graphql')
+app
+  .use(router.routes())
+  .use(router.allowedMethods());
 
-app.listen(4000);
-
+app.listen(4000)
 
 console.log("INALI backend corriendo en puerto 4000")
-
-
-  
-  

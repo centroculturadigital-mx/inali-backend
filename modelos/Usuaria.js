@@ -5,6 +5,7 @@ const PUBLICACION_STATUS = require('../data/PUBLICACION_STATUS')
 
 
 const UsuariaEsquema = new mongoose.Schema({
+    id: Number,
     imagenPerfil: String,
     status: { type: String, enum: PUBLICACION_STATUS },
     nombreUsuaria: String,
