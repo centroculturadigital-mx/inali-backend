@@ -9,6 +9,7 @@ services:
       - "4000:4000"
     volumes:
       - ./modelos:/src/app/modelos
+      - ./data:/src/app/data
       - ./app:/src/app
     depends_on:
       - mongo
@@ -19,6 +20,7 @@ services:
       dockerfile: ./importador/Dockerfile.dev
     volumes:
       - ./modelos:/src/importador/modelos
+      - ./data:/src/importador/data
       - ./importador:/src/importador
     depends_on:
       - mongo

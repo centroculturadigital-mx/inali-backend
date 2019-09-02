@@ -28,9 +28,9 @@ FamiliaTC.addRelation(
   {
     resolver: () => AgrupacionTC.getResolver('findByIds'),
     prepareArgs: { 
-      _ids: (source) => source.agrupacionIds,
+      _ids: (source) => source.agrupacionesIds,
     },
-    projection: { agrupacionIds: 1 },
+    projection: { agrupacionesIds: 1 },
   }
 )
 // Agrupacion tiene Variantes

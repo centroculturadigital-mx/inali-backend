@@ -1,5 +1,7 @@
-const XLSX = require('xlsx')
 const mongoose = require("mongoose")
+
+const importador = require('./importador')
+const vinculador = require('./vinculador')
 
 mongoose.connect(`mongodb://mongo:27017/inali`, {
     useNewUrlParser: true
@@ -9,42 +11,22 @@ const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => console.log('Database connected. App running.'))
 
-const UsuariaModelo = require('./modelos/Usuaria')
+const Usuaria = require('./modelos/Usuaria')
+const Familia = require('./modelos/Familia')
+const Agrupacion = require('./modelos/Agrupacion')
+const Variante = require('./modelos/Variante')
 
 console.log('Corriendo importador')
 
+importador(Usuaria, 'usuarias')
+importador(Familia, 'familias')
+importador(Agrupacion, 'agrupaciones')
+importador(Variante, 'variantes')
 
-const importar = (Modelo, coleccion) => {
-  // leer .xlsx
-  var wb = XLSX.readFile(`./xls/${coleccion}.xlsx`);
-
-  // hacemos un arreglo de json
-  const json = XLSX.utils.sheet_to_json(wb.Sheets['Sheet1'])
-
-  
-  // limpia docs antariores que provienen de un xls
-  UsuariaModelo.remove({origen: 'xls'})
-  .then(res => {
-      console.log('a');
-      
-      console.log(`eliminando ${coleccion} de xls`, res)
-    })
-    .catch(err => {
-        console.log('b');
-        console.log(err)
-    })
-    
-    // console.log(Modelo.remove.toString());
-    // Modelo.find({}).then(res => console.log(res)).catch(err => console.log(err))
-  // crear Instancias del Modelo para cada fila
-  const objetos = json.map(o => {
-    o.origen = 'xls'
-    let nuevoObjeto = new UsuariaModelo(o)
-    nuevoObjeto.save().then(res => console.log(res)).catch(err => console.log(err))
-    return nuevoObjeto
-  })
-}
-
-
-
-importar(UsuariaModelo, 'usuarias')
+setTimeout(() => {
+  vinculador(Familia, Agrupacion, 'agrupaciones_ids', 'agrupacionesIds', true)
+  vinculador(Agrupacion, Variante, 'variantes_ids', 'variantesIds', true)
+  vinculador(Agrupacion, Familia, 'familia_id', 'familiaId', false)
+  vinculador(Variante, Agrupacion, 'agrupacion_id', 'agrupacionId', false)
+  vinculador(Variante, Familia, 'familia_id', 'familiaId', false)
+}, 5000)
