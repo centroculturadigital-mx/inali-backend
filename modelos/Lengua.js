@@ -14,6 +14,7 @@ const LenguaEsquema = new mongoose.Schema({
     enum: Object.keys(LENGUA_TIPOS),
     description: 'Tipo: FAMILIA, AGRUPACION, VARIANTE',
   },
+  transcripcionFonetica: String,
   nombreOriginario: {
     type: String,
     required: true
