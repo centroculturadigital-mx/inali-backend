@@ -5,3 +5,16 @@ app/data
 app/modelos
 importador/modelos
 importador/data
+
+
+.env.local.js
+.env.dev.js
+.env.prod.js
+.env.montaje.js
+.env.mirror.js
+
+
+docker-compose.local.yml
+docker-compose.dev.yml
+docker-compose.prod.yml
+docker-compose.staging.yml
